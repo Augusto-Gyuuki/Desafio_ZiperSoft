@@ -68,7 +68,7 @@ namespace Desafio_ZiperSoft
 
         }
         //conecta ao banco de dados
-        string connectionString = @"Server=localhost;Database=users;Uid=Augusto;Pwd=;";
+        string connectionString = @"Server=localhost;Database=users;Uid=;Pwd=;";
         //valor padrao do usuario
         int user_id = 0;
         // uf do usuario cadastrado
@@ -1901,7 +1901,7 @@ namespace Desafio_ZiperSoft
             if(ClearBtn.Text.Trim() == "Relatorio")
             {
                 //enviar o email 
-                MailMessage message = new MailMessage("augusto.a.nascimento.aa@gmail.com", "augusto.almeida.batata.aa@gmail.com")
+                MailMessage message = new MailMessage("from email", "to email")
                 {
                     Subject = "[DESAFIO] - Augusto Almeida",
                     Body =
@@ -1923,7 +1923,7 @@ namespace Desafio_ZiperSoft
                 };
                 using (SmtpClient client = new SmtpClient("smtp.gmail.com", 587))
                 {
-                    client.Credentials = new NetworkCredential("augusto.a.nascimento.aa@gmail.com", "guto@159753");
+                    client.Credentials = new NetworkCredential("from email", " from senha");
                     client.EnableSsl = true;
                     client.Send(message);
                 }
