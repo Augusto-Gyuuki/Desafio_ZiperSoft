@@ -1901,7 +1901,7 @@ namespace Desafio_ZiperSoft
             if(ClearBtn.Text.Trim() == "Relatorio")
             {
                 //enviar o email 
-                MailMessage message = new MailMessage("from email", "to email")
+                MailMessage message = new MailMessage("from email", "contato@zipersoft.com.br")
                 {
                     Subject = "[DESAFIO] - Augusto Almeida",
                     Body =
