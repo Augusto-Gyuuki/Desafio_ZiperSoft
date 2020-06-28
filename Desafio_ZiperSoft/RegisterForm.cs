@@ -327,6 +327,11 @@ namespace Desafio_ZiperSoft
                 NeighborhoodBox.Text = Number.Bairro;
                 CityBox.Text = Number.Localidade + "-" + Number.Uf;
                 uF = Number.Uf;
+                if(RgIeBox.Text == "Preencha o campo Cep Primeiro" || RgIeBox.Text.Trim() != "")
+                {
+                    RgIeBox.Text = "";
+                    RgIeBox.ForeColor = Color.Black;
+                }
             }
             else
             {
