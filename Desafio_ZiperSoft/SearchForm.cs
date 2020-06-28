@@ -35,7 +35,7 @@ namespace Desafio_ZiperSoft
         );
         ReportDataSource rs = new ReportDataSource();
 
-        string connectionString = @"Server=localhost;Database=users;Uid=Augusto;Pwd=;";
+        string connectionString = @"Server=localhost;Database=users;Uid=;Pwd=;";
         byte[] teste = new byte[0];
 
         public SearchForm()
