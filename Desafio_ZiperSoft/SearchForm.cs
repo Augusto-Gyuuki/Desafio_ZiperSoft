@@ -196,7 +196,7 @@ namespace Desafio_ZiperSoft
             List<ReportInfo> lst = new List<ReportInfo>();
             lst.Clear();
             // ler todas as informaçoes do data grid para gerar o relatorio
-            for (int i = 0; i < usersDataG.Rows.Count - 1; i++)
+            for (int i = 0; i < usersDataG.Rows.Count; i++)
             {
                 ReportInfo report = new ReportInfo
                 {
