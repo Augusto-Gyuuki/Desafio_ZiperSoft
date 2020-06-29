@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,32 +33,30 @@ namespace Desafio_ZiperSoft
             string siteData,
             string telefoneData,
             string cellphoneData,
-            MemoryStream photoData,
             string obsData,
             string typeData,
             int idData
             )
         {
-             NameBox.Text = nameData;
-             CepBox.Text = cepData;
-             AddressBox.Text = addressData;
-             AddressNumberBox.Text = addressNumberData;
-             NeighborhoodBox.Text = neighborhoodData;
-             CityBox.Text = cityData;
-             CpfCnpjBox.Text = cpfCnpjData;
-             RgIeBox.Text = rgIeData;
-             EmailBox.Text = emailData;
-             SiteBox.Text = siteData;
-             TelefoneBox.Text = telefoneData;
-             CellphoneBox.Text = cellphoneData;
-             ObsBox.Text = obsData;
-             userType = typeData;
-             pictureBox1.Image = Image.FromStream(photoData);
-             user_id = idData;
-             btnSubmit.Text = "Atualizar";
-             btnSearch.Text = "Excluir";
-             ClearBtn.Text = "Relatorio";
-             RgIeBox.ForeColor = Color.Black ;
+            NameBox.Text = nameData;
+            CepBox.Text = cepData;
+            AddressBox.Text = addressData;
+            AddressNumberBox.Text = addressNumberData;
+            NeighborhoodBox.Text = neighborhoodData;
+            CityBox.Text = cityData;
+            CpfCnpjBox.Text = cpfCnpjData;
+            RgIeBox.Text = rgIeData;
+            EmailBox.Text = emailData;
+            SiteBox.Text = siteData;
+            TelefoneBox.Text = telefoneData;
+            CellphoneBox.Text = cellphoneData;
+            ObsBox.Text = obsData;
+            userType = typeData;
+            user_id = idData;
+            btnSubmit.Text = "Atualizar";
+            btnSearch.Text = "Excluir";
+            ClearBtn.Text = "Relatorio";
+            RgIeBox.ForeColor = Color.Black ;
 
             if (ObsBox.Text.ToLower().Trim().Equals("caso necessario") || ObsBox.Text.Trim().Equals(""))
             {
@@ -68,7 +66,7 @@ namespace Desafio_ZiperSoft
 
         }
         //conecta ao banco de dados
-        string connectionString = @"Server=localhost;Database=users;Uid=;Pwd=;";
+        string connectionString = @"Server=localhost;Database=users;Uid=Augusto;Pwd=;";
         //valor padrao do usuario
         int user_id = 0;
         // uf do usuario cadastrado
@@ -121,6 +119,10 @@ namespace Desafio_ZiperSoft
                 CellphoneBox.BackColor == Color.IndianRed)
             {
                 MessageBox.Show("Preencha todos os campos corretamente");
+                if(AddressNumberBox.Text.Trim() == "")
+                {
+                    AddressNumberBox.BackColor = Color.IndianRed;
+                }
             }
             else
             {
@@ -206,15 +208,12 @@ namespace Desafio_ZiperSoft
         private void ObsBox_Leave(object sender, EventArgs e)
         {
             // placeholder
-
             String obsText = ObsBox.Text;
             if (obsText.ToLower().Trim().Equals("caso necessario") || obsText.Trim().Equals(""))
             {
                 ObsBox.Text = "caso necessario";
                 ObsBox.ForeColor = Color.Gray;
             }
-
-
         }
 
         private void ObsBox_Enter(object sender, EventArgs e)
@@ -230,7 +229,7 @@ namespace Desafio_ZiperSoft
         }
 
         // validação do CPF
-        static bool Cpf(string cpf)
+        public static bool Cpf(string cpf)
         {
             int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
             int[] multiplicador2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
@@ -327,7 +326,7 @@ namespace Desafio_ZiperSoft
                 NeighborhoodBox.Text = Number.Bairro;
                 CityBox.Text = Number.Localidade + "-" + Number.Uf;
                 uF = Number.Uf;
-                if(RgIeBox.Text == "Preencha o campo Cep Primeiro" || RgIeBox.Text.Trim() != "")
+                if (RgIeBox.Text == "Preencha o campo Cep Primeiro" || RgIeBox.Text.Trim() != "")
                 {
                     RgIeBox.Text = "";
                     RgIeBox.ForeColor = Color.Black;
@@ -337,13 +336,13 @@ namespace Desafio_ZiperSoft
             {
                 CepBox.BackColor = Color.IndianRed;
             }
-
         }
+        
 
         private void CpfCnpjBox_Leave(object sender, EventArgs e)
         {
             //valida o cpf ou cnpj e define se a pessoa é fisica ou juridica
-            if (Cpf(CpfCnpjBox.Text) == true)
+            if (Cpf(CpfCnpjBox.Text))
             {
                 CpfCnpjBox.BackColor = Color.White;
                 userType = "F";
@@ -478,7 +477,7 @@ namespace Desafio_ZiperSoft
 
         }
         
-        private static bool fncValida_Inscricao_Estadual_AC(string Ds_Inscricao_Estadual)
+        public static bool fncValida_Inscricao_Estadual_AC(string Ds_Inscricao_Estadual)
         {
 
             var strOrigem = Ds_Inscricao_Estadual;
@@ -528,8 +527,7 @@ namespace Desafio_ZiperSoft
 
             return (strBase2 == strOrigem);
         }
-
-        private static bool fncValida_Inscricao_Estadual_AL(string Ds_Inscricao_Estadual)
+        public static bool fncValida_Inscricao_Estadual_AL(string Ds_Inscricao_Estadual)
         {
 
             var strOrigem = Ds_Inscricao_Estadual;
@@ -561,8 +559,7 @@ namespace Desafio_ZiperSoft
 
             return strBase2 == strOrigem;
         }
-
-        private static bool fncValida_Inscricao_Estadual_AM(string Ds_Inscricao_Estadual)
+        public static bool fncValida_Inscricao_Estadual_AM(string Ds_Inscricao_Estadual)
         {
 
             var strOrigem = Ds_Inscricao_Estadual;
@@ -588,8 +585,7 @@ namespace Desafio_ZiperSoft
             return (strBase2 == strOrigem);
 
         }
-
-        private static bool fncValida_Inscricao_Estadual_AP(string Ds_Inscricao_Estadual)
+        public static bool fncValida_Inscricao_Estadual_AP(string Ds_Inscricao_Estadual)
         {
 
             var strOrigem = Ds_Inscricao_Estadual;
@@ -621,8 +617,7 @@ namespace Desafio_ZiperSoft
 
             return strBase2 == strOrigem;
         }
-
-        private static bool fncValida_Inscricao_Estadual_BA(string Ds_Inscricao_Estadual)
+        public static bool fncValida_Inscricao_Estadual_BA(string Ds_Inscricao_Estadual)
         {
 
             var strOrigem = Ds_Inscricao_Estadual;
@@ -842,8 +837,7 @@ namespace Desafio_ZiperSoft
             return false;
 
         }
-
-        private static bool fncValida_Inscricao_Estadual_CE(string Ds_Inscricao_Estadual)
+        public static bool fncValida_Inscricao_Estadual_CE(string Ds_Inscricao_Estadual)
         {
 
             var strOrigem = Ds_Inscricao_Estadual;
@@ -876,8 +870,7 @@ namespace Desafio_ZiperSoft
             return strBase2 == strOrigem;
 
         }
-
-        private static bool fncValida_Inscricao_Estadual_DF(string Ds_Inscricao_Estadual)
+        public static bool fncValida_Inscricao_Estadual_DF(string Ds_Inscricao_Estadual)
         {
 
             var strOrigem = Ds_Inscricao_Estadual;
@@ -925,8 +918,7 @@ namespace Desafio_ZiperSoft
 
             return strBase2 == strOrigem;
         }
-
-        private static bool fncValida_Inscricao_Estadual_ES(string Ds_Inscricao_Estadual)
+        public static bool fncValida_Inscricao_Estadual_ES(string Ds_Inscricao_Estadual)
         {
 
             var strOrigem = Ds_Inscricao_Estadual;
@@ -950,8 +942,7 @@ namespace Desafio_ZiperSoft
             return strBase2 == strOrigem;
 
         }
-
-        private static bool fncValida_Inscricao_Estadual_GO(string Ds_Inscricao_Estadual)
+        public static bool fncValida_Inscricao_Estadual_GO(string Ds_Inscricao_Estadual)
         {
 
             var strOrigem = Ds_Inscricao_Estadual;
@@ -995,8 +986,7 @@ namespace Desafio_ZiperSoft
 
             return strBase2 == strOrigem;
         }
-
-        private static bool fncValida_Inscricao_Estadual_MA(string Ds_Inscricao_Estadual)
+        public static bool fncValida_Inscricao_Estadual_MA(string Ds_Inscricao_Estadual)
         {
 
             var strOrigem = Ds_Inscricao_Estadual;
@@ -1020,8 +1010,7 @@ namespace Desafio_ZiperSoft
             return strBase2 == strOrigem;
 
         }
-
-        private static bool fncValida_Inscricao_Estadual_MT(string Ds_Inscricao_Estadual)
+        public static bool fncValida_Inscricao_Estadual_MT(string Ds_Inscricao_Estadual)
         {
 
             var strOrigem = Ds_Inscricao_Estadual;
@@ -1053,8 +1042,7 @@ namespace Desafio_ZiperSoft
             return strBase2 == strOrigem;
 
         }
-
-        private static bool fncValida_Inscricao_Estadual_MS(string Ds_Inscricao_Estadual)
+        public static bool fncValida_Inscricao_Estadual_MS(string Ds_Inscricao_Estadual)
         {
 
             var strOrigem = Ds_Inscricao_Estadual;
@@ -1078,8 +1066,7 @@ namespace Desafio_ZiperSoft
             return strBase2 == strOrigem;
 
         }
-
-        private static bool fncValida_Inscricao_Estadual_MG(string Ds_Inscricao_Estadual)
+        public static bool fncValida_Inscricao_Estadual_MG(string Ds_Inscricao_Estadual)
         {
 
             var strOrigem = Ds_Inscricao_Estadual;
@@ -1141,8 +1128,7 @@ namespace Desafio_ZiperSoft
             return intNumero == Convert.ToInt32(strOrigem.Substring(12, 1));
 
         }
-
-        private static bool fncValida_Inscricao_Estadual_PA(string Ds_Inscricao_Estadual)
+        public static bool fncValida_Inscricao_Estadual_PA(string Ds_Inscricao_Estadual)
         {
 
             var strOrigem = Ds_Inscricao_Estadual;
@@ -1166,8 +1152,7 @@ namespace Desafio_ZiperSoft
             return strBase2 == strOrigem;
 
         }
-
-        private static bool fncValida_Inscricao_Estadual_PB(string Ds_Inscricao_Estadual)
+        public static bool fncValida_Inscricao_Estadual_PB(string Ds_Inscricao_Estadual)
         {
 
             var strOrigem = Ds_Inscricao_Estadual;
@@ -1197,8 +1182,7 @@ namespace Desafio_ZiperSoft
             return strBase2 == strOrigem;
 
         }
-
-        private static bool fncValida_Inscricao_Estadual_PE(string Ds_Inscricao_Estadual)
+        public static bool fncValida_Inscricao_Estadual_PE(string Ds_Inscricao_Estadual)
         {
 
             var strOrigem = Ds_Inscricao_Estadual;
@@ -1260,8 +1244,7 @@ namespace Desafio_ZiperSoft
             return intValor.ToString() == strOrigem.Substring(8, 1);
 
         }
-
-        private static bool fncValida_Inscricao_Estadual_PI(string Ds_Inscricao_Estadual)
+        public static bool fncValida_Inscricao_Estadual_PI(string Ds_Inscricao_Estadual)
         {
 
             var strOrigem = Ds_Inscricao_Estadual;
@@ -1285,8 +1268,7 @@ namespace Desafio_ZiperSoft
             return strBase2 == strOrigem;
 
         }
-
-        private static bool fncValida_Inscricao_Estadual_PR(string Ds_Inscricao_Estadual)
+        public static bool fncValida_Inscricao_Estadual_PR(string Ds_Inscricao_Estadual)
         {
 
             var strOrigem = Ds_Inscricao_Estadual;
@@ -1333,8 +1315,7 @@ namespace Desafio_ZiperSoft
             return strBase2 == strOrigem;
 
         }
-
-        private static bool fncValida_Inscricao_Estadual_RJ(string Ds_Inscricao_Estadual)
+        public static bool fncValida_Inscricao_Estadual_RJ(string Ds_Inscricao_Estadual)
         {
 
             var strOrigem = Ds_Inscricao_Estadual;
@@ -1363,8 +1344,7 @@ namespace Desafio_ZiperSoft
             return strBase2 == strOrigem;
 
         }
-
-        private static bool fncValida_Inscricao_Estadual_RN(string Ds_Inscricao_Estadual)
+        public static bool fncValida_Inscricao_Estadual_RN(string Ds_Inscricao_Estadual)
         {
 
             var strOrigem = Ds_Inscricao_Estadual;
@@ -1425,8 +1405,7 @@ namespace Desafio_ZiperSoft
             return false;
 
         }
-
-        private static bool fncValida_Inscricao_Estadual_RO(string Ds_Inscricao_Estadual)
+        public static bool fncValida_Inscricao_Estadual_RO(string Ds_Inscricao_Estadual)
         {
 
             var strOrigem = Ds_Inscricao_Estadual;
@@ -1457,8 +1436,7 @@ namespace Desafio_ZiperSoft
             return strBase2 == strOrigem;
 
         }
-
-        private static bool fncValida_Inscricao_Estadual_RR(string Ds_Inscricao_Estadual)
+        public static bool fncValida_Inscricao_Estadual_RR(string Ds_Inscricao_Estadual)
         {
 
             var strOrigem = Ds_Inscricao_Estadual;
@@ -1482,8 +1460,7 @@ namespace Desafio_ZiperSoft
             return strBase2 == strOrigem;
 
         }
-
-        private static bool fncValida_Inscricao_Estadual_RS(string Ds_Inscricao_Estadual)
+        public static bool fncValida_Inscricao_Estadual_RS(string Ds_Inscricao_Estadual)
         {
 
             var strOrigem = Ds_Inscricao_Estadual;
@@ -1518,8 +1495,7 @@ namespace Desafio_ZiperSoft
             return strBase2 == strOrigem;
 
         }
-
-        private static bool fncValida_Inscricao_Estadual_SC(string Ds_Inscricao_Estadual)
+        public static bool fncValida_Inscricao_Estadual_SC(string Ds_Inscricao_Estadual)
         {
 
             var strOrigem = Ds_Inscricao_Estadual;
@@ -1543,8 +1519,7 @@ namespace Desafio_ZiperSoft
             return strBase2 == strOrigem;
 
         }
-
-        private static bool fncValida_Inscricao_Estadual_SE(string Ds_Inscricao_Estadual)
+        public static bool fncValida_Inscricao_Estadual_SE(string Ds_Inscricao_Estadual)
         {
 
             var strOrigem = Ds_Inscricao_Estadual;
@@ -1574,8 +1549,7 @@ namespace Desafio_ZiperSoft
             return strBase2 == strOrigem;
 
         }
-
-        private static bool fncValida_Inscricao_Estadual_SP(string Ds_Inscricao_Estadual)
+        public static bool fncValida_Inscricao_Estadual_SP(string Ds_Inscricao_Estadual)
         {
 
             var strOrigem = Ds_Inscricao_Estadual;
@@ -1653,8 +1627,7 @@ namespace Desafio_ZiperSoft
             return strBase2 == strOrigem;
 
         }
-
-        private static bool fncValida_Inscricao_Estadual_TO(string Ds_Inscricao_Estadual)
+        public static bool fncValida_Inscricao_Estadual_TO(string Ds_Inscricao_Estadual)
         {
 
             var strOrigem = Ds_Inscricao_Estadual;
@@ -1715,10 +1688,9 @@ namespace Desafio_ZiperSoft
             {
                 RgIeBox.BackColor = Color.White;
             }
-
         }
 
-        private static bool emailValidator(string email)
+        public static bool emailValidator(string email)
         {
             // função para verificar o email
             var isValid = new EmailAddressAttribute().IsValid(email);
@@ -1745,7 +1717,7 @@ namespace Desafio_ZiperSoft
             }
         }
 
-        private static bool numberIsValid(string number)
+        public static bool numberIsValid(string number)
         {
             // se o numero de telefone nao se encaixar nesse padrao nao sera valido
             string pattern = @"^1\d\d(\d\d)?$|^0800 ?\d{3} ?\d{4}$|^(\(0?([1-9a-zA-Z][0-9a-zA-Z])?[1-9]\d\) ?|0?([1-9a-zA-Z][0-9a-zA-Z])?[1-9]\d[ .-]?)?(9|9[ .-])?[2-9]\d{3}[ .-]?\d{4}$";
@@ -1763,23 +1735,13 @@ namespace Desafio_ZiperSoft
         private void TelefoneBox_Leave(object sender, EventArgs e)
         {
             //muda a cor de fundo se o usuario entrar no campo e nao digitar nada ou digitar um numero invalido
-
-            if (numberIsValid(TelefoneBox.Text) || TelefoneBox.Text == "")
+            if (numberIsValid(TelefoneBox.Text))
             {
                 TelefoneBox.BackColor = Color.White;
             }
             else
             {
                 TelefoneBox.BackColor = Color.IndianRed;
-            }
-        }
-
-        private void AddressNumberBox_TextChanged(object sender, EventArgs e)
-        {
-            //permite que o usuario digite apenas numeros
-            if (Regex.IsMatch(AddressNumberBox.Text, "[^0-9]"))
-            {
-                AddressNumberBox.Text = AddressNumberBox.Text.Remove(AddressNumberBox.Text.Length - 1);
             }
         }
 
@@ -1822,7 +1784,7 @@ namespace Desafio_ZiperSoft
         private void CellphoneBox_Leave(object sender, EventArgs e)
         {
             //muda a cor de fundo se o usuario entrar no campo e nao digitar nada ou digitar um numero invalido
-            if (numberIsValid(CellphoneBox.Text) || CellphoneBox.Text == "")
+            if (numberIsValid(CellphoneBox.Text))
             {
                 CellphoneBox.BackColor = Color.White;
             }
@@ -1906,7 +1868,7 @@ namespace Desafio_ZiperSoft
             if(ClearBtn.Text.Trim() == "Relatorio")
             {
                 //enviar o email 
-                MailMessage message = new MailMessage("from email", "contato@zipersoft.com.br")
+                MailMessage message = new MailMessage("remetente email", "contato@zipersoft.com.br")
                 {
                     Subject = "[DESAFIO] - Augusto Almeida",
                     Body =
@@ -1928,7 +1890,7 @@ namespace Desafio_ZiperSoft
                 };
                 using (SmtpClient client = new SmtpClient("smtp.gmail.com", 587))
                 {
-                    client.Credentials = new NetworkCredential("from email", " from senha");
+                    client.Credentials = new NetworkCredential("remetente email", "remetente senha");
                     client.EnableSsl = true;
                     client.Send(message);
                 }
