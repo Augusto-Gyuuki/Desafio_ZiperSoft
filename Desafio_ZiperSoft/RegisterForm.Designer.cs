@@ -1,4 +1,4 @@
-﻿namespace Desafio_ZiperSoft
+namespace Desafio_ZiperSoft
 {
     partial class RegisterForm
     {
