@@ -422,6 +422,7 @@ namespace Desafio_ZiperSoft
                     return false;
             }
         }
+
         public async void CepIsValid()
         {
             //faz uma requisição a uma api para auto preencher os campos relacionados ao endereço

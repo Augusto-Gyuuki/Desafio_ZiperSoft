@@ -338,7 +338,6 @@ namespace Desafio_ZiperSoft
             }
         }
         
-
         private void CpfCnpjBox_Leave(object sender, EventArgs e)
         {
             //valida o cpf ou cnpj e define se a pessoa é fisica ou juridica
