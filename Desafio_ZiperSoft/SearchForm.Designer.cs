@@ -135,7 +135,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView usersDataG;
+        public System.Windows.Forms.DataGridView usersDataG;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox SearchBox;
         private System.Windows.Forms.Button SearchBtn;

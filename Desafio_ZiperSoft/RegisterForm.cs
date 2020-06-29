@@ -20,7 +20,7 @@ namespace Desafio_ZiperSoft
 {
     public partial class RegisterForm : Form
     {
-        //recebe as informaçoes do usuario do formulario de pesquisa e as altera para ediçao ou relatorio
+    //recebe as informaçoes do usuario do formulario de pesquisa e as altera para ediçao ou relatorio
         public void PassedData(string nameData,
             string cepData,
             string addressData,
@@ -126,7 +126,7 @@ namespace Desafio_ZiperSoft
             }
             else
             {
-                if(ObsBox.Text == "caso necessario")
+                if (ObsBox.Text == "caso necessario")
                 {
                     //salva o usuario passando o tipo da pessoa
                     ObsBox.Text = "";
@@ -177,10 +177,10 @@ namespace Desafio_ZiperSoft
                 {
                     // se o id do usuario for diferente de 0 ele esta sendo atualizado no banco de dados
                     MessageBox.Show("Cadastro atualizado com Sucesso");
+                    
                     this.Close();
                 }
                 Clear();
-
             }
         }
 

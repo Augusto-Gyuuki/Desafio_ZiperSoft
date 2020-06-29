@@ -34,6 +34,7 @@ namespace Desafio_ZiperSoft
             string typeData,
             int idData
         );
+        
         ReportDataSource rs = new ReportDataSource();
         string uF;
         string connectionString = @"Server=localhost;Database=users;Uid=Augusto;Pwd=;";
@@ -106,7 +107,7 @@ namespace Desafio_ZiperSoft
             }
         }
         //busca todos os usuario no banco de dados
-        private void SearchForm_Load(object sender, EventArgs e)
+        public void SearchForm_Load(object sender, EventArgs e)
         {
             Search();
         }
@@ -118,7 +119,7 @@ namespace Desafio_ZiperSoft
                 var frm = new RegisterForm();
                 frm.Location = this.Location;
                 frm.StartPosition = FormStartPosition.Manual;
-                frm.FormClosing += delegate { this.Show(); };
+                frm.FormClosing += delegate { this.Search();this.Show(); };
                 PassData del = new PassData(frm.PassedData);
                 byte[] img = (byte[])usersDataG.CurrentRow.Cells[13].Value;
                 MemoryStream ms = new MemoryStream(img);
