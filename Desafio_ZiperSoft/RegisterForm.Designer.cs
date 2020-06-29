@@ -1,4 +1,4 @@
-﻿namespace Desafio_ZiperSoft
+namespace Desafio_ZiperSoft
 {
     partial class RegisterForm
     {
@@ -245,7 +245,6 @@
             this.AddressNumberBox.Name = "AddressNumberBox";
             this.AddressNumberBox.Size = new System.Drawing.Size(43, 22);
             this.AddressNumberBox.TabIndex = 27;
-            this.AddressNumberBox.TextChanged += new System.EventHandler(this.AddressNumberBox_TextChanged);
             this.AddressNumberBox.Leave += new System.EventHandler(this.AddressNumberBox_Leave);
             // 
             // EmailBox
@@ -468,7 +467,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnSubmit;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button ClearBtn;
     }
 }
